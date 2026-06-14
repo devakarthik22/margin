@@ -1,0 +1,42 @@
+<main class="grid">
+  <mg-diff-input [loading]="state() === 'reviewing'" (run)="run($event)"
+                 (runGithub)="runPr($event)" (prLoaded)="prFiles.set($event)" />
+
+  <section class="panel out">
+    <div class="head">
+      <span class="eyebrow">Margin notes</span>
+      @if (verdictMeta) {
+        <span class="verdict" [style.--c]="verdictMeta.color">
+          <span class="vdot"></span>{{ verdictMeta.label }}
+        </span>
+      }
+    </div>
+
+    @switch (state()) {
+      @case ('idle') {
+        <div class="empty">
+          <div class="mark">▌</div>
+          <p>Paste a diff and run a review. The agent reasons here, then leaves notes in the margin.</p>
+        </div>
+      }
+      @case ('reviewing') {
+        <mg-agent-trace [steps]="steps()" [active]="true" />
+      }
+      @case ('error') {
+        <div class="empty err">
+          <p>{{ errorMsg() }}</p>
+        </div>
+      }
+      @case ('done') {
+        <div class="review">
+          <mg-review-summary [review]="result()!" />
+          <mg-comment-composer
+            [findings]="result()!.findings"
+            [summary]="result()!.summary"
+            [prUrl]="reviewedPrUrl()"
+            [prFiles]="prFiles()" />
+        </div>
+      }
+    }
+  </section>
+</main>

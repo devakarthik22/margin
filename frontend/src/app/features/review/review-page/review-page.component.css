@@ -1,0 +1,20 @@
+/* Host must fill the viewport space .app gives it, otherwise the grid (and the
+   scrollable panels inside it) have no fixed height to size against. */
+:host { display:flex; flex-direction:column; flex:1; min-height:0; }
+.grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; flex:1; min-height:0; }
+.panel { background:var(--surface); border:1px solid var(--line); border-radius:14px;
+  padding:18px; display:flex; flex-direction:column; gap:14px; min-height:0; }
+.head { display:flex; align-items:center; justify-content:space-between; min-height:26px; }
+.eyebrow { font-family:var(--mono); font-size:11px; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--faint); }
+.out { overflow:hidden; }
+.verdict { display:flex; align-items:center; gap:7px; font-family:var(--mono);
+  font-size:12px; font-weight:600; color:var(--c); }
+.vdot { width:8px; height:8px; border-radius:50%; background:var(--c); box-shadow:0 0 10px var(--c); }
+.empty { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:14px; text-align:center; color:var(--muted); padding:24px; }
+.empty p { max-width:280px; font-size:14px; line-height:1.6; }
+.empty.err p { color:var(--text); }
+.mark { font-family:var(--mono); font-size:40px; color:var(--line); }
+.review { flex:1; min-height:0; overflow-y:auto; display:flex; flex-direction:column; gap:16px; padding-right:6px; }
+@media (max-width:880px) { .grid { grid-template-columns:1fr; } .out { min-height:360px; } }

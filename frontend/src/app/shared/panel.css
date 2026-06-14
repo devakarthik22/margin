@@ -1,0 +1,27 @@
+/* Shared panel chrome used by the input and output columns. */
+.panel {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+  padding: 18px; display: flex; flex-direction: column; gap: 14px; min-height: 0; height: 100%;
+}
+.head { display: flex; align-items: center; justify-content: space-between; min-height: 26px; }
+.eyebrow {
+  font-family: var(--mono); font-size: 11px; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--faint);
+}
+.code {
+  flex: 1; min-height: 0; resize: none; overflow-y: auto; background: var(--canvas);
+  border: 1px solid var(--line); border-radius: 10px; padding: 14px;
+  font-family: var(--mono); font-size: 13px; line-height: 1.7; color: var(--text); tab-size: 2;
+}
+.code::placeholder { color: var(--faint); }
+.code:focus { outline: none; border-color: var(--accent); }
+.actions { display: flex; gap: 10px; justify-content: flex-end; flex: none; }
+.ghost, .run {
+  font-size: 13px; font-weight: 600; border-radius: 9px; padding: 10px 16px;
+  cursor: pointer; border: 1px solid transparent; transition: .15s;
+}
+.ghost { background: transparent; color: var(--muted); border-color: var(--line); }
+.ghost:hover { color: var(--text); border-color: var(--faint); }
+.run { background: var(--accent); color: #0E0F15; box-shadow: 0 4px 18px -6px rgba(124,140,248,.7); }
+.run:hover { filter: brightness(1.07); }
+.run:disabled { opacity: .55; cursor: default; box-shadow: none; }

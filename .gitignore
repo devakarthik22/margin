@@ -1,0 +1,45 @@
+# ---- Secrets / local env (never commit) ----
+.env
+.env.*
+*.local
+*.pem
+*.key
+application-local.yml
+application-local.yaml
+application-secret*.yml
+secrets.*
+
+# ---- Java / Maven (backend) ----
+target/
+*.class
+*.jar
+*.war
+!.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties
+hs_err_pid*
+replay_pid*
+
+# ---- Node / Angular (frontend) ----
+node_modules/
+dist/
+.angular/
+npm-debug.log*
+yarn-error.log*
+*.tsbuildinfo
+
+# ---- IDE / editor ----
+.idea/
+*.iml
+*.iws
+.vscode/
+.project
+.classpath
+.settings/
+
+# ---- OS ----
+.DS_Store
+Thumbs.db
+
+# ---- Logs ----
+*.log
+logs/
